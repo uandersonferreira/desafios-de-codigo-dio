@@ -1,0 +1,16 @@
+O que são Clients?
+
+- dispositivo que está consumindo recursos da internet.
+
+clients -> <-  internet(protocolos http)  -> <- servers
+
+Aplicações web - 
+  - São soluções criadas que possuem a internet como meio de comunicação entre client x Server não sendo necessário a sua instalação.
+
+
+-Acesso pelo navegador: wwww.com.br/xxxx (Aplicações web).
+-Acesso através de um aplicativo instalado no seu dispositivo (Aplicativos e não Aplicações web).
+
+
+
+
