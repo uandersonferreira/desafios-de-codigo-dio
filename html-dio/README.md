@@ -4,8 +4,25 @@
 Uma breve descrição do seu projeto.
 
 ## Sumário
-- [Formulário HTML form](#formulário-html)
-- [Restrições de Entrada Input](#restrições-de-entrada)
+- [Formação HTML5](#formação-html5)
+  - [Descrição](#descrição)
+  - [Sumário](#sumário)
+  - [Formulário HTML](#formulário-html)
+  - [Restrições de Entrada](#restrições-de-entrada)
+- [Div vs. Span](#div-vs-span)
+  - [Div:](#div)
+  - [Span:](#span)
+- [Estrutura básica de um página web](#estrutura-básica-de-um-página-web)
+- [fieldset](#fieldset)
+- [Cores no navegador](#cores-no-navegador)
+  - [Hexadecimal](#hexadecimal)
+- [Entendendo tags de mídia](#entendendo-tags-de-mídia)
+    - [Tag `<img>`](#tag-img)
+    - [Tag `<audio>`](#tag-audio)
+    - [Tag `<video>`](#tag-video)
+    - [Tag `<track>`](#tag-track)
+    - [Tag `<iframe>`](#tag-iframe)
+
 
 
 ## Formulário HTML
@@ -52,23 +69,23 @@ Exemplo: `<form methodoverride="PUT">`
 
 Aqui está uma lista de algumas restrições comuns de entrada:
 
-| Atributo  | Descrição                                                                                        |
-|-----------|--------------------------------------------------------------------------------------------------|
-| checked   | Especifica que um campo de entrada deve ser pré-selecionado quando a página é carregada         |
-| disabled  | Especifica que um campo de entrada deve ser desativado                                           |
-| max       | Especifica o valor máximo para um campo de entrada                                                |
-| maxlength | Especifica o número máximo de caracteres para um campo de entrada                                 |
-| min       | Especifica o valor mínimo para um campo de entrada                                                |
-| pattern   | Especifica uma expressão regular para verificar o valor de entrada                                |
-| readonly  | Especifica que um campo de entrada é somente leitura (não pode ser alterado)                     |
-| required  | Especifica que um campo de entrada é obrigatório (deve ser preenchido)                           |
-| size      | Especifica a largura (em caracteres) de um campo de entrada                                       |
-| step      | Especifica os intervalos numéricos legais para um campo de entrada                                 |
-| value     | Especifica o valor padrão para um campo de entrada                                                |
+| Atributo  | Descrição                                                                               |
+| --------- | --------------------------------------------------------------------------------------- |
+| checked   | Especifica que um campo de entrada deve ser pré-selecionado quando a página é carregada |
+| disabled  | Especifica que um campo de entrada deve ser desativado                                  |
+| max       | Especifica o valor máximo para um campo de entrada                                      |
+| maxlength | Especifica o número máximo de caracteres para um campo de entrada                       |
+| min       | Especifica o valor mínimo para um campo de entrada                                      |
+| pattern   | Especifica uma expressão regular para verificar o valor de entrada                      |
+| readonly  | Especifica que um campo de entrada é somente leitura (não pode ser alterado)            |
+| required  | Especifica que um campo de entrada é obrigatório (deve ser preenchido)                  |
+| size      | Especifica a largura (em caracteres) de um campo de entrada                             |
+| step      | Especifica os intervalos numéricos legais para um campo de entrada                      |
+| value     | Especifica o valor padrão para um campo de entrada                                      |
 
 Exemplo de Uso:
 
-```html
+
 <input type="checkbox" id="pre-selected" name="pre-selected" checked>
 <label for="pre-selected">Pré-selecionado</label><br>
 
@@ -86,3 +103,228 @@ Exemplo de Uso:
 
 <input type="text" id="required" name="required" required>
 <label for="required">Campo Obrigatório</label><br>
+
+```html
+
+<input type="checkbox" id="pre-selected" name="pre-selected" checked>
+<label for="pre-selected">Pré-selecionado</label><br>
+
+<input type="number" id="min-max" name="min-max" min="1" max="10">
+<label for="min-max">Entre 1 e 10</label><br>
+
+<input type="text" id="max-length" name="max-length" maxlength="20">
+<label for="max-length">Até 20 caracteres</label><br>
+
+<input type="text" id="pattern" name="pattern" pattern="[A-Za-z]{3}">
+<label for="pattern">Apenas letras (3 caracteres)</label><br>
+
+<input type="text" id="readonly" name="readonly" readonly value="Somente Leitura">
+<label for="readonly">Somente Leitura</label><br>
+
+<input type="text" id="required" name="required" required>
+<label for="required">Campo Obrigatório</label><br>
+```
+
+# Div vs. Span
+[Voltar para o Sumário](#sumário)
+
+## Div:
+
+A `<div>` é um elemento de bloco em HTML usado para agrupar elementos em uma seção ou área específica de uma página da web. Ele cria um bloco que normalmente ocupa toda a largura disponível. É frequentemente usado para dividir o layout da página em seções distintas e aplicar estilos CSS a essas seções.
+
+Exemplo de uso de `<div>`:
+
+```html
+<div id="header">
+    <h1>Título do site</h1>
+    <p>Descrição do site</p>
+</div>
+```
+Neste exemplo, o `<div>` com o id "header" é usado para agrupar o título e a descrição do site em uma seção de cabeçalho.
+
+## Span:
+[Voltar para o Sumário](#sumário)
+
+O `<span>` é um elemento de linha em HTML usado para aplicar estilos a partes específicas de um texto dentro de um elemento de bloco, como `<div>`, `<p>`, `<h1>`, etc. Ele não cria uma quebra de linha, ao contrário do `<div>`, e é útil para aplicar estilos a partes específicas de texto ou para inserir elementos inline dentro de um bloco.
+
+Exemplo de uso de `<span>`:
+
+```html
+<p>Este é um parágrafo com <span style="color: blue;">texto azul</span> dentro dele.</p>
+```
+Neste exemplo, o <span> é usado para aplicar a cor azul apenas ao texto "texto azul" dentro do parágrafo.
+
+# Estrutura básica de um página web
+[Voltar para o Sumário](#sumário)
+
+![Estrutura básica de um página web](img/basic-structure-html-page-01.png)
+
+![Estrutura básica de um página web](img/basic-structure-html-page-02.png)
+
+- ELEMENTOS (VERDE)- TAGS HTML.
+
+- GRUPO DE ELEMENTOS (VERMELHA) - 1 TAG HTML QUE AGRUPA OS ELEMENTOS.
+
+- CONTAINER (AZUL) - 1 TAG HTML QUE AGRUPA ELEMENTOS E GRUPOS.
+
+
+```mermaid
+CONTAINER --> 
+          "GRUPO DE ELEMENTOS" -->
+                              ELEMENTOS
+```
+![Estrutura básica de um página web](img/pixel-perfect-01.png)
+
+# fieldset
+[Voltar para o Sumário](#sumário)
+
+Definição e uso:
+
+ A `<fieldset>` tag é usada para agrupar elementos relacionados em um formulário.
+
+A  `<fieldset>` tag desenha uma caixa ao redor dos elementos relacionados.
+
+Dicas e notas
+Dica: A tag `<legend>` é usada para definir uma legenda para o  `<fieldset>` elemento.
+
+EXEMPLO:
+
+<form action="/action_page.php">
+  <fieldset>
+    <legend>Personalia:</legend>
+    <label for="fname">First name:</label>
+    <input type="text" id="fname" name="fname"><br><br>
+    <label for="lname">Last name:</label>
+    <input type="text" id="lname" name="lname"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="birthday">Birthday:</label>
+    <input type="date" id="birthday" name="birthday"><br><br>
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>
+
+# Cores no navegador
+[Voltar para o Sumário](#sumário)
+
+ -  RGB: Combinação de Vermelho, Verde e Azul (Red, Green, Blue)
+ -  HEX: Combinação de Vermelho, Verde e Azul, mas descrito em Hexadecimal
+-  HSL: Matiz (Hue), Saturação (Saturation) e Iluminação (Lighten). A matiz tem os valores onde 0 é
+vermelho, 120 verde, 240 azul.
+-  RGBA: Mesmo que RGB, porémadicionado canal Alpha (Transparência)
+-  HSLA: Mesmo que HSL, porémadicionado canal Alpha (Transparência
+  
+  
+
+## Hexadecimal
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 <br>
+0,1,2,3,4,5,6,7,8,9, A, B, C, D, E, F
+
+#RRGGBB -> #FF0000 -> 255 0 0
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Trilha HTML - Dio</title>
+<style>
+    .card1{
+        border: solid 1px black;
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        left: 40%;
+        top: 40%;
+        z-index: 1;
+        background-color: aquamarine;
+    }
+    .card2{
+        border: solid 1px black;
+        width: 110px;
+        height: 110px;
+        position: absolute;
+        left: 35%;
+        top: 35%;
+        z-index: 2;
+        background-color: rgba(255, 0, 0, 0.5);
+        
+        /* Atalho comentário - CTRL + ;
+        background-color: hsla(300, 100%, 50%, 0.5);
+        background-color: hsl(300, 100%, 50%);
+        background-color: #FF00FF;
+        background-color: rgb(255, 0, 255);
+         */
+
+    }
+</style>
+</head>
+<body>
+    <div class="card1"></div>
+    <div class="card2"></div>
+</body>
+</html>
+```
+# Entendendo tags de mídia
+[Voltar para o Sumário](#sumário)
+
+
+### Tag `<img>`
+Essa tag é usada para inserir imagens em uma página da web. O atributo `src` é obrigatório e especifica o caminho da imagem. Outros atributos comuns incluem `alt` para fornecer um texto alternativo para a imagem e `width` e `height` para definir as dimensões da imagem.
+Obs: title e alt é recomendavel para fornecer acessibilidade.
+
+Exemplo:
+```html
+<img src="caminho_da_imagem.jpg" title="titulo para quando passar o mouse em cima" alt="Descrição da imagem para leitura de robôs" width="200" height="150">
+```
+
+### Tag `<audio>`
+Essa tag é usada para incorporar conteúdo de áudio em uma página da web. O atributo `src` é obrigatório e especifica o caminho do arquivo de áudio. Outros atributos podem incluir `controls` para exibir controles de reprodução.
+
+Exemplo:
+```html
+<audio controls>
+  <source src="caminho_do_audio.mp3" type="audio/mpeg">
+  Seu navegador não suporta o elemento de áudio.
+</audio>
+```
+
+### Tag `<video>`
+Essa tag é usada para incorporar conteúdo de vídeo em uma página da web. O atributo `src` é obrigatório e especifica o caminho do arquivo de vídeo. Assim como na tag `<audio>`, pode-se utilizar o atributo `controls` para exibir controles de reprodução e `autoplay` para iniciar o áudio assim que abrir a página(opcional). 
+
+Exemplo:
+```html
+<video controls autoplay width="400" height="300">
+  <source src="caminho_do_video.mp4" type="video/mp4">
+  Seu navegador não suporta o elemento de vídeo.
+</video>
+```
+
+### Tag `<track>`
+Essa tag é usada em conjunto com a tag `<video>` ou `<audio>` para fornecer legendas, transcrições ou descrições de áudio/vídeo. O atributo `src` especifica o caminho do arquivo de legenda e o atributo `kind` define o tipo de legenda (legendas, legendas descritivas, etc.).
+
+Exemplo:
+```html
+<video controls>
+  <source src="caminho_do_video.mp4" type="video/mp4">
+  <track src="legendas.vtt" kind="subtitles" srclang="pt" label="Português">
+  Seu navegador não suporta o elemento de vídeo.
+</video>
+```
+
+### Tag `<iframe>`
+Essa tag é usada para incorporar uma página da web dentro de outra página da web. O atributo `src` especifica o URL da página a ser incorporada.
+
+Exemplo:
+```html
+<iframe 
+src="pagina_incorporada.html"
+width="600" 
+height="400" 
+frameborder="0" 
+allowfullscreen
+>
+</iframe>
+```

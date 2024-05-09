@@ -11,6 +11,11 @@ Aplicações web -
 -Acesso pelo navegador: wwww.com.br/xxxx (Aplicações web).
 -Acesso através de um aplicativo instalado no seu dispositivo (Aplicativos e não Aplicações web).
 
+# How to handle traffic between microservices?
+(Como lidar com o tráfego entre microsserviços?)
+
+
+Para gerenciar o tráfego dentro de uma arquitetura de microsserviços, muitas vezes precisamos implementar balanceamento de carga(load balancing), descoberta de serviços(service discovery) e políticas de rede (network policies). Os balanceadores de carga distribuem o tráfego de rede de entrada por um grupo de servidores back-end para garantir que nenhum servidor suporte muita demanda. A descoberta de serviços permite que os serviços encontrem e se comuniquem entre si em um ambiente dinâmico. As políticas de rede também podem ser implementadas para controlar o fluxo de tráfego com base nas suas necessidades de segurança e conformidade.
 
 
 

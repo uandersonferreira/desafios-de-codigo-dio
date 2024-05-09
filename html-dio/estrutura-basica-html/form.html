@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+</head>
+
+<body>
+    <h1>Formulario de Cadastro simples</h1>
+    <form name="signup" action="#" method="GET" target="_blank" autocomplete="on"
+        onsubmit="alert('Enviei o formulario')">
+
+        Nome: <input type="text" name="name"> <br>
+        Idade: <input type="number" name="age"> <br>
+        Senha: <input type="password" name="password"> <br>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+
+<!--
+        Ao enviar os dados do form irão para o servidor o nome
+        contido em 'name' + valor digitado pelo usuário.
+        ex: name=Uanderson
+
+A tag <form> é usada para criar um formulário HTML que permite aos usuários
+     inserir e enviar dados para um servidor.
+
+1. name: Identifica o formulário e é usado para acessar os dados do
+ formulário no lado do servidor.
+
+Exemplo: <form name="loginForm">
+
+2. action: Especifica para onde os dados do formulário serão enviados quando submetidos.
+
+Exemplo: <form action="processar_dados.php">
+
+3. method: Especifica como os dados do formulário serão enviados. Os valores comuns são GET e POST.
+
+Exemplo: <form method="POST">
+
+    GET: Os dados do formulário são anexados à URL como uma string de consulta. 
+    É adequado para formulários de pesquisa ou envio de pequenas quantidades de
+    dados não sensíveis.
+    EX: http://exemplo.com/processar_dados.php?nome=John&idade=25
+
+    POST: Os dados do formulário são enviados no corpo da solicitação HTTP.
+    É mais seguro para enviar grandes quantidades de dados ou dados sensíveis,
+    como senhas.
+    EX:
+    POST /processar_dados.php HTTP/1.1
+    Host: exemplo.com
+    Content-Type: application/x-www-form-urlencoded
+
+    nome=John&idade=25
+
+
+4. target: Especifica onde abrir o resultado do envio do formulário, como "_blank" 
+para abrir em uma nova janela.
+
+Exemplo: <form target="_blank">
+
+5. enctype: Especifica como os dados do formulário devem ser codificados antes de 
+serem enviados, útil principalmente para envio de arquivos.
+
+Exemplo: <form enctype="multipart/form-data">
+
+6. novalidate: Desativa a validação de formulário HTML5 embutida.
+
+Exemplo: <form novalidate>
+
+7. accept-charset: Especifica a codificação de caracteres que o servidor
+ deve usar para interpretar os dados do formulário.
+
+Exemplo: <form accept-charset="UTF-8">
+
+8. methodoverride: Substitui o método de envio do formulário quando o navegador
+ não suporta o método especificado pelo atributo "method".
+
+Exemplo: <form methodoverride="PUT">
+
+-->
+
+
+</body>
+
+</html>
