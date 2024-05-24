@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Principal</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="logo">
+      <strong>
+        Curiosidades <span>Tech</span> <span id="ponto">.</span>
+      </strong>
+    </nav>
+  </header>
+
+  <div class="bar"></div>
+
+  <section class="content">
+    <aside class="sidebar">
+      <h2>Curiosidades Tech</h2>
+      <ul>
+        <li>
+          <a href="./index.html" target="_self">Java (plataforma de software)</a>
+        </li>
+        <li>
+          <a href="./anotacoes-spring-boot.html" target="_self">Spring Annotations</a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <section id="Stereotype">
+        <h2>Anotações Spring Boot</h2>
+        <h3>Stereotype</h3>
+        <ol>
+          <li>@Component</li>
+          <li>@Repository</li>
+          <li>@Service</li>
+          <li>@Controller | @RestController</li>
+        </ol>
+        <p>
+          As anotações Stereotype indicam que nossas classes Java serão Beans,
+          gerenciados pelo Spring.
+        </p>
+        <dl>
+          <dt id="component"><strong>@Component:</strong></dt>
+          <dd>
+            Informa ao Spring que a classe será gerenciada por ele, permitindo
+            injeção de dependências. No entanto, é uma notação genérica.
+          </dd>
+          <dt id="service"><strong>@Service:</strong></dt>
+          <dd>
+            Indica que a classe representa um serviço da aplicação, ou seja,
+            nossas regras de negócios.
+          </dd>
+          <dt id="repository"><strong>@Repository:</strong></dt>
+          <dd>
+            Indica ao Spring que a classe possui regras de negócio do banco de
+            dados ou lida com operações CRUD.
+          </dd>
+          <dt id="controller"><strong>@Controller:</strong></dt>
+          <dd>
+            Representa os endpoints da aplicação web no modelo MVC, lidando
+            com solicitações do usuário e retornando a resposta apropriada.
+          </dd>
+          <dt id="restcontroller"><strong>@RestController:</strong></dt>
+          <dd>
+            Representa os endpoints da aplicação web que não envolvem nenhuma
+            view (interface).
+          </dd>
+        </dl>
+
+        <figure>
+          <img src="assets/images/stereotype-hierarquia.png" alt="imagem da hirarquia das anotações do Stereotype" />
+          <figcaption>
+            imagem da hirarquia das anotações do Stereotype
+          </figcaption>
+        </figure>
+      </section>
+
+      <section id="core">
+        <h3>Core</h3>
+        <span>Beans</span>
+        <ol>
+          <li>@Autowired</li>
+          <li>@Qualifier</li>
+          <li>@Value</li>
+        </ol>
+        <span>Context</span>
+        <ol>
+          <li>@Configuration</li>
+          <li>@ComponentScan</li>
+          <li>@Bean</li>
+          <li>@Lazy</li>
+          <li>@Primary</li>
+          <li>@Scope</li>
+          <li>@PropertySource</li>
+          <li>@PropertySources</li>
+          <li>@Profile</li>
+        </ol>
+
+
+        <aside id="autowired">
+          <dl>
+            <dt>
+              <strong>@Autowired</strong>
+            </dt>
+            <dd>
+              Utilizado para realizar a Injeta de dependência de objetos
+              implicitamente pelo contêiner Spring. Podendo ser aplicado em
+              métodos setter e construtores.
+            </dd>
+          </dl>
+
+          <p>
+            Basicamente, criar uma referência de uma classe (associação)
+            dentro de outra, onde o spring conseguira enxergar e gerenciar
+            todos os métodos criados que a classe injetada possui, sem a
+            necessidade de ser criar um construtor.
+          </p>
+          </dl>
+        </aside>
+
+        <aside id="qualifier">
+          <dl>
+            <dt><strong>@Qualifier:</strong></dt>
+            <dd>
+              A anotação do qualificador é usada para resolver o conflito de
+              fiação automática quando há vários beans do mesmo tipo. A
+              anotação do @Qualifier pode ser usada em qualquer classe
+              anotada com @Component ou em métodos anotados com @Bean. Esta
+              anotação também pode ser aplicada a argumentos de construtores
+              ou parâmetros de método.
+            </dd>
+          </dl>
+
+          <p>
+            Supondo temos dois beans, Car e Bike implementando a interface
+            Veículos que possui um método start(). E queiramos criar um
+            serviço para esses veículos ao realizar a injeção de dependência
+            de qualquer um dos beans dentro desse serviço, somente
+            utilizando o @Autowired, o Qualifier lança
+            NoUniqueBeanDefinitionException, pois gera um conflito entre
+            eles, já que temos dois beans que possuem o mesmo método. E para
+            resolver isso basta utilizar o @Qualifier junto com o @Autowired
+            passando o nome do bean/class com a 1a letra minúscula ou o
+            value definido.
+          </p>
+
+          <pre>
+                <code class="codigo">
+                  // Interface Veiculo.java
+                  public interface Veiculo {
+                      void start();
+                  }
+
+                  // Classe Car.java
+                  @Component("car")
+                  public class Car implements Veiculo {
+                      @Override
+                      public void start() {
+                          System.out.println("Carro ligado.");
+                      }
+                  }
+
+                  // Classe Bike.java
+                  @Component("bike")
+                  public class Bike implements Veiculo {
+                      @Override
+                      public void start() {
+                          System.out.println("Bicicleta ligada.");
+                      }
+                  }
+
+                  // Classe ServicoVeiculo.java
+                  @Service
+                  public class ServicoVeiculo {
+                      private final Veiculo veiculo;
+
+                      @Autowired
+                      public ServicoVeiculo(@Qualifier("car") Veiculo veiculo) {
+                          this.veiculo = veiculo;
+                      }
+
+                      public void iniciarVeiculo() {
+                          veiculo.start();
+                      }
+                  }
+
+                  // Classe MainApplication.java (Spring Boot Application)
+                  @SpringBootApplication
+                  public class MainApplication {
+
+                      public static void main(String[] args) {
+                          ConfigurableApplicationContext context = SpringApplication.run(MainApplication.class, args);
+
+                          ServicoVeiculo servicoVeiculo = context.getBean(ServicoVeiculo.class);
+                          servicoVeiculo.iniciarVeiculo();
+
+                          context.close();
+                      }
+                  }
+
+                </code>
+              </pre>
+          <!-- Botão de cópia de trecho de código -->
+          <button class="copy-button" onclick="copiarCodigo('.codigo')">
+            Copiar Código
+          </button>
+        </aside>
+
+        <aside id="value">
+          <dl>
+            <dt><strong>@Value:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Value</code> é usada para injetar valores de propriedades definidas no arquivo
+                <code>application.properties</code> do Spring Boot.
+              </p>
+              <p>Por exemplo, se você tem a propriedade <code>app.nome=calculadora</code> no seu arquivo
+                <code>application.properties</code>, você pode injetá-la em uma variável Java da seguinte forma:
+              </p>
+              <pre><code>@Value("${app.nome}")<br>private String appNome;</code></pre>
+              <p>Isso injetará o valor <code>calculadora</code> na variável <code>appNome</code>.</p>
+            </dd>
+          </dl>
+        </aside>
+
+
+        <aside id="configuration">
+          <dl>
+            <dt><strong>@Configuration:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Configuration</code> é usada para indicar que uma classe possui métodos de
+                configurações/formatações globais que devem ser aplicadas a determinado objeto ou resposta quando
+                solicitados.</p>
+              <p>Por exemplo, você pode criar uma classe de configuração para definir configurações padrão para sua
+                aplicação:</p>
+              <pre><code>@Configuration<br>public class AppConfig {<br>    // Métodos de configuração aqui<br>}</code></pre>
+            </dd>
+          </dl>
+        </aside>
+
+        <aside id="componentScan">
+          <dl>
+            <dt><strong>@ComponentScan:</strong></dt>
+            <dd>
+              <p>A anotação <code>@ComponentScan</code> define os caminhos de classes ou pacotes que serão
+                verificados/lidos ou até mesmo excluídos da leitura durante a inicialização do Spring Boot.</p>
+              <p>Por exemplo, se você tem classes de serviço em um pacote chamado <code>com.example.servico</code>, você
+                pode usar essa anotação para escanear esse pacote:</p>
+              <pre><code>@ComponentScan("com.example.servico")<br>@SpringBootApplication<br>public class MinhaAplicacao {<br>    public static void main(String[] args) {<br>        SpringApplication.run(MinhaAplicacao.class, args);<br>    }<br>}</code></pre>
+            </dd>
+          </dl>
+        </aside>
+
+
+        <aside id="bean">
+          <dl>
+            <dt><strong>@Bean:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Bean</code> é uma anotação usada para declarar um bean que será gerenciado pelo
+                Spring, normalmente usada em methods. Basicamente, é quando temos um método que retorna um tipo
+                específico de uma classe que contém o método de origem, onde não há injeção de dependência na classe que
+                está chamando o método. Muito utilizada quando queremos que o Spring gerencie métodos de
+                terceiros/bibliotecas.</p>
+              <p>Por padrão, o nome do bean será igual ao nome do método. Para personalizar o nome do bean, use seu
+                atributo <code>name</code> ou <code>value</code>.</p>
+              <p><strong>Exemplo:</strong></p>
+              <pre><code>@Configuration<br>public class AppConfig {<br>    @Bean(name = "meuBean")<br>    public MinhaClasse meuMetodo() {<br>        return new MinhaClasse();<br>    }<br>}</code></pre>
+            </dd>
+          </dl>
+        </aside>
+
+        <aside id="lazy">
+          <dl>
+            <dt><strong>@Lazy:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Lazy</code> indica que um bean deve ser inicializado lentamente. Quando aplicado a
+                qualquer bean (classe), a inicialização desse bean não ocorrerá até que seja referenciado por outro bean
+                (requisitado) ou explicitamente recuperado do BeanFactory envolvente, ou seja, necessita de um ponto de
+                injeção.</p>
+              <p><strong>Exemplo:</strong></p>
+              <pre><code>@Lazy<br>@Component<br>public class MeuBean {<br>    // Métodos e atributos<br>}</code></pre>
+            </dd>
+          </dl>
+        </aside>
+
+        <aside id="primary">
+          <dl>
+            <dt><strong>@Primary:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Primary</code> indica que um bean deve ter preferência/prioridade quando fazemos a
+                injeção de dependência. Quando existem vários beans/classes com o mesmo nome que estão sendo chamadas em
+                uma determinada classe(beans do mesmo tipo), e é semelhante ao <code>@Qualifier</code>. Quando não
+                estiver usando <code>@Primary</code>, talvez seja necessário fornecer a anotação <code>@Qualifier</code>
+                para injetar os beans corretamente.</p>
+              <p><strong>Exemplo:</strong></p>
+              <pre><code>@Component<br>@Primary<br>public class MeuBean {<br>    // Métodos e atributos<br>}</code></pre>
+            </dd>
+          </dl>
+        </aside>
+
+        <aside id="scope">
+          <dl>
+            <dt><strong>@Scope:</strong></dt>
+            <dd>
+              <p>A anotação <code>@Scope</code> indica o nome de um escopo a ser usado para instâncias do tipo anotado.
+                No Spring 5, os beans podem estar em um dos seis escopos: singleton, prototype, request, session,
+                application e websocket.</p>
+              <p><strong>Exemplo:</strong></p>
+              <pre><code>@Scope("prototype")<br>@Component<br>public class MeuBean {<br>    // Métodos e atributos<br>}</code></pre>
+            </dd>
+          </dl>
+
+          <p>
+            O escopo de um bean é definido usando a anotação <code>@Scope</code> . Por padrão, o framework Spring cria
+            exatamente uma instância para cada bean declarado no contêiner IoC. Esta instância é compartilhada no escopo
+            de todo o contêiner IoC e é retornada para todas as chamadas <code>getBean()</code> e referências de bean
+            subsequentes. Esse escopo é chamado singleton, que é o escopo padrão de todos os beans.
+          </p>
+          <p>
+            As anotações @Scope só podem ser usadas na classe bean concreta (para componentes anotados) ou no método de
+            fábrica (para métodos @Bean). Quando usado na classe de bean concreto como uma anotação de nível de tipo
+            junto com @Component, @Scope indica o nome de um escopo a ser usado para instâncias do tipo anotado. Quando
+            usado no método de fábrica como uma anotação em nível de método junto com @Bean, @Scope indica o nome de um
+            escopo a ser usado para a instância retornada do método
+          </p>
+
+          <table summary="Tabela de scopos do spring boot">
+            <caption>Tabela de scopos do spring boot</caption>
+            <thead>
+              <tr> <!-- 1 linha-->
+                <th id="escopos"><!-- Coluna 1-->
+                  <span>Escopos</span>
+                </th>
+
+                <th id="definicao"><!-- Coluna 2-->
+                  <span>Definição</span>
+                </th>
+                <th id="exemplos">
+                  <span>Exemplos</span>
+                </th>
+              </tr><!--1 linha-->
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  singleton
+                </td>
+                <td>
+                  Isso cria uma única instância de bean por contêiner Spring IoC.
+                </td>
+                <td>
+                  <span>@Scope("singleton")</span>
+                  <span> @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  prototype
+                </td>
+
+                <td>
+                  Cria uma nova instância toda vez que o bean for solicitado do contêiner Spring.
+                </td>
+
+                <td>
+                  <span>@Scope("prototype") </span>
+                  <span> @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  request
+                </td>
+
+                <td>
+                  Isso cria uma única instância de bean por solicitação HTTP. É válido apenas no contexto de uma
+                  aplicação web
+                </td>
+
+                <td>
+                  <span>@Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
+                  </span>
+                  <span> @RequestScope - funciona como um atalho para a definição acima.</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  session
+                </td>
+
+                <td>
+                  Isso cria uma única instância de bean por sessão HTTP. É válido apenas no contexto de uma aplicação
+                  web.
+                </td>
+
+                <td>
+                  <span>@Scope(value = "session") </span>
+                  <span>@Scope(value = org.springframework.web.context.WebApplicationContext.SCOPE_SESSION)</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  globalSession
+                </td>
+
+                <td>
+                  Isso cria uma única instância de bean por sessão HTTP global. É válido apenas no contexto de um
+                  aplicativo de portal.
+                </td>
+
+                <td>
+                  <span>@Scope(value = "globalSession") </span>
+                  <span>@Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION) </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <details>
+            <summary>@Request - proxyMode</summary>
+            O atributo proxyMode é necessário porque no momento da instanciação do contexto da aplicação web não há
+            nenhuma solicitação ativa. Spring cria um proxy para ser injetado como uma dependência e instancia o bean
+            alvo quando é necessário em uma solicitação.
+          </details>
+        </aside>
+
+        <aside id="propertySource">
+          <dl>
+            <dt>
+              <strong>@PropertySource</strong>
+            </dt>
+            <dd>
+              <p>Sua função consiste em representar uma fonte de dados da qual iremos obter nossas listas de
+                propriedades (properties). Esta fonte de dados pode ser literalmente qualquer coisa: arquivos, web
+                services, bancos de dados, sistemas gestores de configuração como o Spring Cloud Config Server, etc.
+                Quando temos mais de uma fonte de dados podemos utilizar a anotação <code>@PropertySources</code>.</p>
+              <h4>Exemplos de Uso:</h4>
+              <ol>
+                <li>
+                  <strong>Declarando em uma classe de configuração:</strong>
+                  <pre><code>@Configuration
+                @PropertySource("classpath:application.properties")
+                public class AppConfig {
+                    // Configurações adicionais
+                }</code></pre>
+                </li>
+                <li>
+                  <strong>Declarando programaticamente:</strong>
+                  <pre><code>@Configuration
+                public class AnotherConfig {
+                    // Configurações adicionais
+                
+                    @PropertySource("file:/path/to/custom.properties")
+                    public class CustomPropertySource {}
+                }</code></pre>
+                </li>
+              </ol>
+            </dd>
+          </dl>
+        </aside>
+
+        <aside id="profile">
+          <dl>
+            <dt>
+              <strong>@Profile</strong>
+            </dt>
+            <dd>
+              <p>Distinguir valores e propriedades. Quando queremos que o Spring use uma classe de
+                <code>@Component</code> ou um método <code>@Bean</code> somente quando um perfil específico estiver
+                ativo, você poderá marcá-lo com <code>@Profile</code>.
+              </p>
+              <h4>Exemplos de Uso:</h4>
+              <ol>
+                <li>
+                  <strong>Annotando um componente:</strong>
+                  <pre><code>@Configuration
+                public class ServiceConfig {
+                
+                    @Bean
+                    @Profile("production")
+                    public MyProductionService myService() {
+                        return new MyProductionService();
+                    }
+                }</code></pre>
+                </li>
+                <li>
+                  <strong>Ativando o perfil em tempo de execução:</strong>
+                  <p>Você também pode ativar perfis durante a execução do aplicativo, por exemplo, usando a opção
+                    <code>--spring.profiles.active</code>:
+                  </p>
+                  <pre>java -jar myapp.jar --spring.profiles.active=development</pre>
+                </li>
+              </ol>
+            </dd>
+          </dl>
+        </aside>
+      </section>
+
+      <section id="boot">
+        <h2>Boot</h2>
+        <dl>
+          <dt>@SpringBootApplication</dt>
+          <dd>
+              <p>Esta anotação é usada para marcar uma classe de configuração principal do Spring Boot. Ela combina três anotações em uma: <code>@Configuration</code>, <code>@EnableAutoConfiguration</code> e <code>@ComponentScan</code>.</p>
+              <p><strong>Exemplo de Uso:</strong></p>
+              <pre><code>
+  @SpringBootApplication
+  public class MyApplication {
+  
+      public static void main(String[] args) {
+          SpringApplication.run(MyApplication.class, args);
+      }
+  }
+              </code></pre>
+          </dd>
+  
+          <dt>@EnableAutoConfiguration</dt>
+          <dd>
+              <p>Esta anotação é usada para habilitar a configuração automática do Spring Boot. Ela instrui o Spring Boot a tentar automaticamente configurar o aplicativo com base nas dependências adicionadas ao classpath.</p>
+              <p><strong>Exemplo de Uso:</strong></p>
+              <pre><code>
+  @EnableAutoConfiguration
+  public class MyConfiguration {
+  
+      // Configurações personalizadas do aplicativo
+  }
+              </code></pre>
+          </dd>
+  
+          <dt>@ConfigurationProperties</dt>
+          <dd>
+              <p>Esta anotação é usada para mapear propriedades de aplicativos configuradas externamente para classes Java. Ela permite injetar propriedades de configuração do arquivo <code>application.properties</code> ou <code>application.yml</code> em um objeto.</p>
+              <p><strong>Exemplo de Uso:</strong></p>
+              <pre><code>
+  @ConfigurationProperties(prefix = "myapp")
+  public class MyProperties {
+  
+      private String name;
+      private int port;
+  
+      // Getters e Setters
+  }
+              </code></pre>
+          </dd>
+      </dl>
+      </section>
+
+      <section id="web">
+        <h2>Web</h2>
+        <dl>
+          <dt>@RestController</dt>
+          <dd>
+            <p>Esta anotação combina as anotações <code>@Controller</code> e <code>@ResponseBody</code>. Ela é usada
+              para criar controladores RESTful no Spring MVC, onde cada método de controle retorna um objeto serializado
+              diretamente para o corpo da resposta HTTP.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+
+                @RestController
+                @RequestMapping("/api")
+                @CrossOrigin(origins = "http://localhost:8080")
+                public class MyController {
+
+                  @GetMapping("/example")
+                  public String getExample() {
+                      return "Exemplo de GET";
+                  }
+
+                  @PostMapping("/example")
+                  public String postExample(@RequestBody String data) {
+                      return "Exemplo de POST: " + data;
+                  }
+
+                  @PutMapping("/example/{id}")
+                  public String putExample(@PathVariable Long id, @RequestParam String name) {
+                      return "Exemplo de PUT para o ID " + id + " com nome " + name;
+                  }
+
+                  @DeleteMapping("/example/{id}")
+                  public String deleteExample(@PathVariable Long id) {
+                      return "Exemplo de DELETE para o ID " + id;
+                  }
+                }
+          </code></pre>
+          </dd>
+        </dl>
+
+        <dl>
+          <dt>@RequestMapping</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear solicitações HTTP para métodos de controle específicos em controladores
+              Spring. Ela pode ser aplicada a nível de classe e/ou método.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+  @RestController
+  @RequestMapping("/api")
+  public class MyController {
+  
+      @RequestMapping("/hello")
+      public String hello() {
+          return "Olá!";
+      }
+  
+      @RequestMapping(value = "/user", method = RequestMethod.POST)
+      public String addUser(@RequestBody User user) {
+          // Adicionar lógica para adicionar usuário
+          return "Usuário adicionado: " + user.getName();
+      }
+  }
+              </code></pre>
+          </dd>
+
+          <dt>@PostMapping</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear solicitações HTTP POST para métodos de controle específicos em
+              controladores Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+  @RestController
+  @RequestMapping("/api")
+  public class MyController {
+  
+      @PostMapping("/user")
+      public String addUser(@RequestBody User user) {
+          // Adicionar lógica para adicionar usuário
+          return "Usuário adicionado: " + user.getName();
+      }
+  }
+              </code></pre>
+          </dd>
+
+        </dl>
+
+        <dl>
+
+          <dt>@GetMapping</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear solicitações HTTP GET para métodos de controle específicos em
+              controladores Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @GetMapping("/user/{id}")
+    public String getUser(@PathVariable Long id) {
+        // Adicionar lógica para recuperar usuário com o ID especificado
+        return "Detalhes do usuário para o ID " + id;
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@PutMapping</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear solicitações HTTP PUT para métodos de controle específicos em
+              controladores Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @PutMapping("/user/{id}")
+    public String updateUser(@PathVariable Long id, @RequestBody User user) {
+        // Adicionar lógica para atualizar o usuário com o ID especificado
+        return "Usuário atualizado: " + user.getName();
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@DeleteMapping</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear solicitações HTTP DELETE para métodos de controle específicos em
+              controladores Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @DeleteMapping("/user/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        // Adicionar lógica para excluir o usuário com o ID especificado
+        return "Usuário excluído com sucesso";
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@RequestBody</dt>
+          <dd>
+            <p>Esta anotação é usada para mapear o corpo da solicitação HTTP para um objeto no método de controle
+              Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @PostMapping("/user")
+    public String addUser(@RequestBody User user) {
+        // Adicionar lógica para adicionar usuário
+        return "Usuário adicionado: " + user.getName();
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@PathVariable</dt>
+          <dd>
+            <p>Esta anotação é usada para indicar que um argumento de método está ligado a uma variável de modelo URI em
+              um método de controle Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @GetMapping("/user/{id}")
+    public String getUser(@PathVariable Long id) {
+        // Adicionar lógica para recuperar usuário com o ID especificado
+        return "Detalhes do usuário para o ID " + id;
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@RequestParam</dt>
+          <dd>
+            <p>Esta anotação é usada para acessar os parâmetros de solicitação HTTP em um método de controle Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+public class MyController {
+
+    @GetMapping("/user")
+    public String getUserById(@RequestParam Long id) {
+        // Adicionar lógica para recuperar usuário com o ID especificado
+        return "Detalhes do usuário para o ID " + id;
+    }
+}
+            </code></pre>
+          </dd>
+
+          <dt>@CrossOrigin</dt>
+          <dd>
+            <p>Esta anotação é usada para controlar o acesso de origem cruzada (CORS) para uma determinada classe em um
+              controlador Spring.</p>
+            <p><strong>Exemplo de Uso:</strong></p>
+            <pre><code>
+@RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:8080")
+public class MyController {
+    // Métodos do controlador
+}
+            </code></pre>
+          </dd>
+        </dl>
+      </section>
+
+    </main>
+
+    <button class="btn-scroll-top" aria-label="Voltar ao topo">
+      <img
+        src="assets/images/seta-para-cima.png"
+        alt="Voltar ao topo"
+        width="50"
+        height="50"
+      />
+    </button>
+
+    <aside class="anchors">
+      <h2>Neste Artigo</h2>
+      <ul>
+        <li>
+          <a href="./anotacoes-spring-boot.html" target="_self">Spring Annotations</a>
+          <ol type="1">
+            <li>
+              <a href="#Stereotype"> Stereotype </a> <br />
+              <ol type="a">
+                <li><a href="#component">@Component</a></li>
+                <li><a href="#repository">@Repository</a></li>
+                <li><a href="#service">@Service</a></li>
+                <li><a href="#controller">@Controller</a></li>
+                <li><a href="#restcontroller">@RestComponent</a></li>
+              </ol>
+            </li>
+            <!--  -->
+            <li>
+              <a href="#core"> Core</a> <br />
+              <a href="#beans"> Beans</a> <br />
+              <ol type="a">
+                <li><a href="#autowired">@Autowired</a></li>
+                <li><a href="#qualifier">@Qualifier</a></li>
+                <li><a href="#value">@Value</a></li>
+              </ol>
+
+              <a href="#context"> Context</a> <br />
+              <ol type="a">
+                <li><a href="#configuration">@Configuration</a></li>
+                <li><a href="#componentScan">@ComponentScan</a></li>
+                <li><a href="#bean">@Bean</a></li>
+                <li><a href="#lazy">@Lazy</a></li>
+                <li><a href="#primary">@Primary</a></li>
+                <li><a href="#scope">@Scope</a></li>
+                <li><a href="#propertySources">@PropertySources</a></li>
+                <li><a href="#profile">@Profile</a></li>
+              </ol>
+
+            </li>
+
+            <li><a href="#boot">Boot</a></li>
+            <li><a href="#web">Web</a></li>
+
+          </ol>
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+  <footer class="footer">
+    <p>Autor: Uanderson Ferreira de Oliveira
+        <img src="./assets/images/brasil.png" alt="Bandeira do Brasil">
+    </p>
+    <p>
+        <a href="#">teste@example.com</a>
+    </p>
+
+    <a href="#"> Sobre nós </a>|
+    <a href="#"> Politicas </a>|
+    <span>&copy;2024</span>
+
+</footer>
+  <script src="./assets/scripts/copiar-codigo.js"></script>
+  <script src="./assets/scripts/btn-scroll.js"></script>
+</body>
+
+</html>

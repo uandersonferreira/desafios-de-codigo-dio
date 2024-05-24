@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+html,
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 1200px;
+    display: flex;
+    margin: 0 auto;
+    /* background-color: aquamarine; */
+}
+
+.main {
+    display: flex;
+    flex-flow: column;
+    width: 85%;
+}
+
+.menu {
+    width: 15%;
+    background-color: rgb(204, 212, 212);
+    padding: 10px 20px 0px;
+}
+
+
+.header {
+    /* background-color: rgb(5, 108, 108); */
+    min-height: 100px;
+}
+
+.content {
+    background-color: rgba(1, 1, 32, 0.048);
+    min-height: 300px;
+    padding: 20px;
+}
+
+.content p {
+    text-align: justify;
+}
+
+table{
+    border: 1px solid black;
+}
+
+table tr > td {
+    border: 1px solid black;
+}
+
+table thead th{
+    background-color: black;
+    color: white;
+}
+
+table tfoot td{
+    background-color: #FFC49B;
+}
+
+table tr:nth-child(even) td{
+    background-color: rgb(176, 127, 255);
+}
+
+table tr:hover td{
+    background-color: rgb(228, 228, 112);
+}
+
+.footer {
+    background-color: rgba(35, 26, 66, 0.932);
+    min-height: 120px;
+    color: #f1f1f1;
+}

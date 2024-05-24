@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Código Java</title>
+  <style>
+    /* Estilo para o botão de cópia */
+    .copy-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Exemplo de Código Java</h1>
+  <p>Aqui estão alguns exemplos de código Java:</p>
+  
+  <pre><code class="codigo">
+    public class Exemplo1 {
+        public static void main(String[] args) {
+            String mensagem = "Olá, mundo!";
+            System.out.println(mensagem);
+        }
+    }
+  </code></pre>
+  <!-- Botão de cópia para o primeiro trecho de código -->
+  <button class="copy-button" onclick="copiarCodigo('.codigo')">Copiar Código 1</button>
+  
+  <pre><code class="codigo">
+    public class Exemplo2 {
+        public static void main(String[] args) {
+            String mensagem = "Hello, world!";
+            System.out.println(mensagem);
+        }
+    }
+  </code></pre>
+  <!-- Botão de cópia para o segundo trecho de código -->
+  <button class="copy-button" onclick="copiarCodigo('.codigo')">Copiar Código 2</button>
+
+  <!-- Script para copiar o código -->
+  <script>
+    function copiarCodigo(selector) {
+      var codigo = document.querySelector(selector);
+      var range = document.createRange();
+      range.selectNode(codigo);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+      window.getSelection().removeAllRanges();
+      alert('Código copiado!');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exemplo de uso de tags HTML5 para estruturação de conteúdo.">
+    <meta name="keywords" content="HTML5, tags HTML, estruturação, semântica">
+    <meta name="author" content="Seu Nome">
+
+    <meta name="robots" content="index, follow">
+    <link rel=”canonical” href=”http://www.meusite.com.br/index.php” />
+
+    <!--
+        <meta name="robots" content="index, follow">
+        Em alguns casos, queremos que nosso site/página não seja indexada pelos buscadores.
+        Nos códigos acima, os valores “index” e “noindex” referem-se ao tratamento da página inicial: se o buscador deve ou não incluí-la nos resultados. Os valores “follow” e “nofollow” referem-se aos links da página inicial, se eles devem ser visitados e indexados ou não.
+
+        Meta dados Canonical
+        Muitas vezes, criamos diversos links ao criar uma página. Dessa forma, os buscadores leem diversas páginas com conteúdo repetido. Uma forma de evitar isso é utilizando um metadados conhecido como canonical.
+
+        Basta utilizar o URL que desejamos que seja lido como principal, e assim todos os demais links serão sempre lidos como uma página única e não mais como conteúdo repetido:
+
+        <link rel=”canonical” href=”http://www.meusite.com.br/index.php” />
+        repare que apesar de ser um metadados, não é utilizado a meta tag, e sim a tag link
+    -->
+
+    <title>Tags HTML 5 - Estrutural</title>
+</head>
+
+<body>
+    <header>HEADER
+        <nav>
+            <ul>
+                <li><a href="">Item1</a></li>
+                <li><a href="">Item2</a></li>
+                <li><a href="">Item3</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main><!--1 por página == Conteúdo principal -->
+        MAIN
+        <section> <!--Seções/grupo de informações, não a limite de uso-->
+            SECTION
+            <address>
+                Rua. 00, Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            </address>
+        </section>
+
+        <article>
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+            <p>publicado em <time pubdate>14/05/2024 19:00</time></p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur
+                <q>Uanderson Oliveira</q>.
+            </p>
+            <blockquote cite="https://pt.wikipedia.org/wiki/Descoberta_do_Brasil">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt esse commodi dolorem facere aliquid omnis.
+                Rem ab deserunt adipisci excepturi, praesentium non esse ad quisquam ducimus numquam dicta doloremque!
+                Quae!
+            </blockquote>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam harum praesentium quasi iure quidem.
+            </p>
+        </article>
+
+        <aside> <!--Para assuntos auxiliares, não está ligado ao assunto principal-->
+        </aside>
+    </main>
+    <hr>
+
+    <figure>
+        <img src="../img/pixel-perfect-01.png">
+        <figcaption>Descrição da imagem</figcaption>
+    </figure>
+
+    <picture>
+        <source srcset="../img/basic-structure-html-page-02.png" media="(min-width: 600px)">
+        <img src="../img/basic-structure-html-page-01.png">
+    </picture>
+
+    <footer>FOOTER</footer>
+</body>
+
+</html>

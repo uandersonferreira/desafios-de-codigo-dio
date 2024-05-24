@@ -22,6 +22,7 @@ Uma breve descrição do seu projeto.
     - [Tag `<video>`](#tag-video)
     - [Tag `<track>`](#tag-track)
     - [Tag `<iframe>`](#tag-iframe)
+- [Algumas Tags HTML5 Semânticas](#algumas-tags-html5-semânticas)
 
 
 
@@ -328,3 +329,33 @@ allowfullscreen
 >
 </iframe>
 ```
+# Algumas Tags HTML5 Semânticas 
+[Voltar para o Sumário](#sumário)
+
+1. `<abbr>`: Define uma abreviação ou uma sigla, fornecendo uma expansão opcional para ela.
+2. `<address>`: Define informações de contato, geralmente informações de contato para o autor de um documento ou artigo.
+3. `<article>`: Marca conteúdo independente e auto-contido, como um post de blog, uma notícia, um comentário, etc.
+4. `<aside>`: Define conteúdo que está relacionado com o conteúdo em torno dele, mas não é essencial para a sua compreensão.
+5. `<blockquote>`: Utilizada para definir uma seção de citação longa ou um bloco de texto citado.
+6. `<cite>`: Utilizada para marcar o título de uma obra, como um livro, um artigo ou uma música.
+7. `<code>`: Define uma parte de texto que deve ser exibida em uma fonte de código ou em um formato monoespaçado.
+8. `<datalist>`: Utilizada para fornecer uma lista de opções para um elemento de entrada `<input>`.
+9. `<details>`: Utilizada para criar um elemento de detalhes que pode ser expandido ou colapsado para exibir ou ocultar o conteúdo associado.
+10. `<dialog>`: Define uma caixa de diálogo ou uma janela de alerta na interface do usuário.
+11. `<figcaption>`: Usada em conjunto com a tag `<figure>`, fornece uma legenda ou uma descrição para o conteúdo encapsulado pela tag `<figure>`.
+12. `<figure>`: Utilizada para encapsular algum conteúdo que está relacionado, como uma imagem, uma ilustração, um diagrama, um vídeo, entre outros. Normalmente é acompanhada da tag `<figcaption>` para fornecer uma legenda para o conteúdo.
+13. `<footer>`: Define o rodapé de um documento ou uma seção.
+14. `<header>`: Define o cabeçalho de um documento ou uma seção.
+15. `<kbd>`: Define o texto de entrada do teclado.
+16. `<main>`: Define o conteúdo principal de um documento HTML. Normalmente, há apenas um elemento `<main>` em um documento.
+17. `<mark>`: Utilizada para destacar partes de um texto.
+18. `<meter>`: Utilizada para medir uma quantidade dentro de um intervalo conhecido, como a quantidade de armazenamento usado em um disco ou a força de um sinal.
+19. `<nav>`: Define uma seção de navegação.
+20. `<progress>`: Define uma barra de progresso para indicar o progresso de uma tarefa ou processo.
+21. `<q>`: Define uma citação curta em linha.
+22. `<samp>`: Utilizada para representar uma saída de programa de amostra ou um resultado.
+23. `<section>`: Utilizada para definir seções em um documento, como capítulos, cabeçalhos, rodapés ou qualquer outra parte do documento.
+24. `<summary>`: Usada em conjunto com a tag `<details>`, fornece um resumo ou título para o conteúdo expandido ou oculto.
+25. `<time>`: Utilizada para representar datas e horas em um formato legível para humanos.
+26. `<var>`: Define uma variável em um contexto matemático ou em um contexto de programação.
+27. ``<picture>`: Utilizada para fornecer várias fontes de uma imagem para diferentes condições de exibição.

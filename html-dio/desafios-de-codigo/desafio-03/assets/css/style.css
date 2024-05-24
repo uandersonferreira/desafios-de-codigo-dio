@@ -1,0 +1,191 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+ul {
+  list-style: none;
+  padding-left: 5px;
+}
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 32px;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  background-color: rgb(243, 243, 243);
+}
+.logo strong {
+  margin-left: 16px;
+}
+
+.logo strong > span {
+  color: rgb(7, 7, 221);
+}
+#ponto {
+  color: red;
+}
+
+.bar {
+  background-color: #f9f9fb;
+  padding: 15px;
+  border-top: solid 1px #cdcdcd;
+  border-bottom: solid 1px #cdcdcd;
+}
+.content {
+  max-width: 1440px;
+  margin: auto;
+  grid-gap: 3rem;
+  display: grid;
+  gap: 3rem;
+  grid-template-areas: "sidebar main anchors";
+  grid-template-columns: minmax(0, 15rem) minmax(0, 2.5fr) minmax(0, 15rem);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.footer {
+  min-height: 100px;
+  border-top: solid 1px #cdcdcd;
+  text-align: center;
+  padding-bottom: 16px;
+}
+.anchors {
+  border-left: solid 1px #cdcdcd;
+  padding-left: 15px;
+}
+.sidebar {
+  border-right: solid 1px #cdcdcd;
+}
+figure {
+  text-align: center;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+pre {
+  background-color: #ebe9e9;
+  padding: 8px;
+}
+pre > code {
+  color: rgb(8, 3, 49);
+}
+
+/* Estilo para o botão de cópia */
+.copy-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+p > code{
+  color: #4caf50;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+th, td{
+  border: 1px solid rgb(185, 185, 185);
+} 
+
+table {
+  /* border: 1px solid black; */
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+ caption {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  color: rgb(46, 45, 45);
+} 
+
+table thead th {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+table thead tr th#escopos{
+  width: 10%;
+}
+
+table thead tr th#definicao{
+  width: 40%;
+}
+
+table thead tr th#exemplos{
+  width: 50%;
+}
+
+table tbody td{
+  padding: 8px;
+  text-align: center;
+}
+
+table tbody tr td > span{
+  display: block;
+  text-align: left;
+  font-size: 14px;
+}
+
+table tr:nth-child(even) td {
+  background-color: rgb(176, 127, 255);
+}
+
+table tr:hover {
+  background-color: rgb(228, 228, 112);
+  border: 1px solid black;
+  scale: 1.1;
+}
+
+/* .image-gallery:has(img:hover) img:not(:hover) {
+  scale: .8;
+  opacity: .9;
+} */
+
+.btn-scroll-top {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+
+  background-color: #4caf50;
+  border: 1px solid rgba(0, 0, 0, 0.637);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+
+  outline: none;
+
+  opacity: 0;
+
+  cursor: pointer;
+
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+
+  z-index: 10;
+}
+
+.show-btn-scroll-top {
+  opacity: 1;
+  pointer-events: all;
+}

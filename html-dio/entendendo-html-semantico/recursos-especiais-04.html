@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos especiais</title>
+</head>
+<body>
+    <input type="text" id="busca">
+    <p id="descricao">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, sed tenetur ratione, ipsam est amet expedita quod atque ab aperiam dignissimos corrupti natus culpa. Saepe, reprehenderit recusandae! Sequi, quas aperiam. 
+    </p>
+    
+    <script>
+        var searchField = document.getElementById('busca');
+        var descriptionObject = document.getElementById('descricao');
+        var textToSearch = descriptionObject.innerHTML;
+
+        function realizaBusca(busca){
+            const regex = new RegExp(`(${busca})(?!(.(?!<mark))*</mark>)+`, `ig`);
+
+            const ocurrences = textToSearch.match(regex);
+            descriptionObject.innerHTML = textToSearch.replace(regex, `<mark>${busca}</mark>`);
+        }
+
+        searchField.addEventListener('keyup', (e) => realizaBusca(e.target.value));
+    </script>
+
+    <!-- Canvas -->
+        <!-- https://www.w3schools.com/html/html5_canvas.asp -->
+        <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+        </canvas>
+    
+    
+        <script>
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.moveTo(0, 0);
+            ctx.lineTo(200, 100);
+            ctx.stroke();
+    
+        </script>
+    
+</body>
+</html>

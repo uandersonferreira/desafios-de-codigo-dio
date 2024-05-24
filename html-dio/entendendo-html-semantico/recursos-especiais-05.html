@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos especiais</title>
+</head>
+
+<body>
+    <main>
+        <h1 contenteditable>Novos atributos</h1>
+        <form action="get" action="" id="form"> </form> 
+        <!--
+            desanexar/separar os campos do form, basta informar o id do form nos campos 'form="form"' 
+        -->
+
+        <fieldset disabled>
+            <legend>Informações pessoais</legend>
+            ID:
+            <input type="text" value="1"  form="form">
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados pessoais</legend>
+            <label for="name">
+                Name:
+                <input type="text" id="name" name="name" minlength="2" autofocus required  form="form">
+            </label>
+            <label for="email">
+                E-mail:
+                <input type="text" id="email" name="email" placeholder="ex: teste@gmail.com"  form="form">
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Endereço</legend>
+            <label for="address">
+                Endereço:
+                <input type="text" id="address" name="address"  form="form">
+            </label>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Observações</legend>
+            <textarea name="observation" id="observation" cols="30" rows="5" minlength="10" maxlength="250"  form="form">
+                    </textarea>
+        </fieldset>
+
+        <button type="reset" form="form">Limpar</button>
+        <button type="submit"  form="form">Enviar</button>
+
+    </main>
+
+</body>
+
+</html>

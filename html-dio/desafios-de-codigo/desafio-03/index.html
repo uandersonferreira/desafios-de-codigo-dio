@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="logo">
+        <strong>
+          Curiosidades <span>Tech</span> <span id="ponto">.</span>
+        </strong>
+      </nav>
+      <div class="bar"></div>
+    </header>
+
+    <section class="content">
+      <aside class="sidebar">
+        <h2>Java (plataforma de software)</h2>
+        <ul>
+          <li>
+            <a href="./index.html" target="_self"
+              >Java (plataforma de software)</a
+            >
+          </li>
+          <li>
+            <a href="./anotacoes-spring-boot.html" target="_self"
+              >Anotações spring boot</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <main class="main">
+        <section id="section__01">
+          <header>
+            <h1>Plataforma de Software Java: Uma Visão Geral</h1>
+          </header>
+          <article>
+            <section>
+              <p>
+                A Plataforma de Software Java foi uma ideia nascida da extinta
+                Sun Microsystems para criar uma estrutura de software e API que
+                seja, para todos os efeitos, universal. A ideia era que um
+                desenvolvedor pudesse escrever o software uma vez e depois
+                executá-lo em qualquer lugar, uma filosofia que a Sun apelidou
+                de "Escreva uma vez, execute em qualquer lugar (WORA)".
+                Inicialmente foi desenvolvido para software de televisão
+                interativa, mas foi considerado muito avançado na época. Em vez
+                disso, a Sun desenvolveu o Java para ser escalável, rodando em
+                tudo, desde farms de servidores até pequenos cartões
+                inteligentes.
+              </p>
+            </section>
+            <section>
+              <h2>Características Principais</h2>
+              <ul>
+                <li>
+                  <strong>Universalidade:</strong> O Java é projetado para ser
+                  executado em qualquer plataforma, independentemente do sistema
+                  operacional ou hardware subjacente.
+                </li>
+                <li>
+                  <strong>Portabilidade:</strong> Os programas Java são
+                  compilados em bytecode, que é interpretado pela Máquina
+                  Virtual Java (JVM), permitindo que sejam executados em
+                  diferentes ambientes sem necessidade de recompilação.
+                </li>
+                <li>
+                  <strong>Segurança:</strong> A JVM executa programas Java em um
+                  ambiente seguro, fornecendo uma camada de proteção contra
+                  ameaças de segurança.
+                </li>
+                <li>
+                  <strong>Escalabilidade:</strong> Java é adequado para uma
+                  ampla variedade de aplicações, desde pequenos dispositivos até
+                  sistemas distribuídos complexos.
+                </li>
+              </ul>
+            </section>
+            <section>
+              <h2>Evolução da Plataforma</h2>
+              <p>
+                A Plataforma de Software Java é mantida principalmente pela
+                Oracle, após a aquisição da Sun Microsystems. A comunidade de
+                desenvolvedores continua a contribuir para a evolução da
+                linguagem e da plataforma, mantendo sua relevância e adaptando-a
+                às demandas do mercado.
+              </p>
+            </section>
+          </article>
+          <footer>
+            <p>
+              A Plataforma Java continua sendo uma das tecnologias mais
+              influentes e amplamente adotadas no mundo do desenvolvimento de
+              software, impulsionando a criação de uma vasta gama de aplicativos
+              e serviços em diferentes setores e cenários de implantação.
+            </p>
+          </footer>
+        </section>
+
+        <section id="section__02">
+          <h2>A plataforma</h2>
+          <p>
+            O universo Java é um vasto conjunto de tecnologias, composto por
+            três plataformas principais que foram criadas para segmentos
+            específicos de aplicações:
+          </p>
+          <ul>
+            <li>
+              Java SE (Java Platform, Standard Edition). É a base da plataforma.
+              Inclui o ambiente de execução e as bibliotecas comuns.
+            </li>
+            <li>
+              Java EE (Java Platform, Enterprise Edition). A edição voltada para
+              o desenvolvimento de aplicações corporativas e para internet.
+            </li>
+            <li>
+              Java ME (Java Platform, Micro Edition). A edição para o
+              desenvolvimento de aplicações para dispositivos móveis e
+              embarcados.
+            </li>
+          </ul>
+          <p>
+            Além disso, pode-se destacar outras duas plataformas Java mais
+            específicas:
+          </p>
+          <ul>
+            <li>
+              Java Card. Voltada para dispositivos embarcados com limitações de
+              processamento e armazenamento, como smart cards e o Java Ring.
+            </li>
+            <li>
+              JavaFX. Plataforma para desenvolvimento de aplicações multimídia
+              em desktop/web (JavaFX Script) e dispositivos móveis (JavaFX
+              Mobile).
+            </li>
+          </ul>
+        </section>
+
+        <section id="section__03">
+          <h2>Ambiente de execução Java</h2>
+          <p>
+            Um programa escrito para a plataforma Java necessita de dois
+            componentes para ser executado: a máquina virtual Java, e um
+            conjunto de bibliotecas de classe que disponibilizam um série de
+            serviços para esse programa. O pacote de software que contém a
+            máquina virtual e esta biblioteca de classes é conhecido como JRE
+            (Java Runtime Environment).
+          </p>
+        </section>
+
+        <section id="section__04">
+          <h2>Java Virtual Machine</h2>
+          <p>
+            O coração da plataforma Java é o conceito de um processador
+            "virtual", que executa os programas formados por bytecodes Java.
+            Este bytecode é o mesmo independentemente do hardware ou sistema
+            operacional do sistema em que o programa será executado. A
+            plataforma Java disponibiliza um interpretador, a JVM, que traduz,
+            em tempo de execução, o bytecode para instruções nativas do
+            processador. Isto permite que uma mesma aplicação seja executada em
+            qualquer plataforma computacional que possua uma implementação da
+            máquina virtual.
+          </p>
+          <p>
+            Desde a versão 1.2 da JRE, a implementação da Sun da JVM inclui um
+            compilador just-in-time (JIT). Com este compilador, todo o bytecode
+            de um programa é transformado em instruções nativas e carregado na
+            máquina virtual em uma só operação, permitindo um ganho de
+            desempenho muito grande em comparação com a implementação anterior,
+            onde as instruções em bytecode eram interpretadas uma por vez. O
+            compilador JIT pode ser projetado de acordo com a plataforma ou
+            hardware de destino, e o código que ele gera pode ser otimizado com
+            base na observação de padrões de comportamento dos programas.
+          </p>
+          <p>
+            Desde a primeira versão, este ambiente de execução vem equipado com
+            gestão automática de memória, realizada por um algoritmo coletor de
+            lixo que liberta o programador das tarefas de alocação e libertação
+            de memória, fonte de muitos erros de programação.
+          </p>
+          <p>
+            A plataforma Java não é a primeira plataforma baseada em uma máquina
+            virtual, mas é de longe a mais conhecida e a que alcançou maior
+            sucesso. Anteriormente, esta tecnologia era utilizada na criação de
+            emuladores para auxílio ao projeto de hardware ou de sistemas
+            operacionais. A plataforma Java foi desenhada para ser implementada
+            inteiramente em software, enquanto permitindo a sua migração de
+            maneira fácil para plataformas de hardware de todos os tipos.
+          </p>
+
+          <figure>
+            <caption>
+              Arquitetura do Java
+            </caption>
+            <img
+              src="assets/images/arquitetura-java.png"
+              alt="imagem da arquitetura do java"
+            />
+          </figure>
+        </section>
+      </main>
+
+      <button class="btn-scroll-top" aria-label="Voltar ao topo">
+        <img
+          src="assets/images/seta-para-cima.png"
+          alt="Voltar ao topo"
+          width="50"
+          height="50"
+        />
+      </button>
+
+      <aside class="anchors">
+        <h2>Neste Artigo</h2>
+        <ul>
+          <li><a href="#section__01">Java (plataforma de software)</a></li>
+          <li><a href="#section__02">A plataforma</a></li>
+          <li><a href="#section__03">Ambiente de execução Java</a></li>
+          <li><a href="#section__04">Java virtual machine</a></li>
+        </ul>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Autor: Uanderson Ferreira de Oliveira
+        <img src="./assets/images/brasil.png" alt="Bandeira do Brasil" />
+      </p>
+      <p>
+        <a href="#">teste@example.com</a>
+      </p>
+
+      <a href="#"> Sobre nós </a>| <a href="#"> Politicas </a>|
+      <span>&copy;2024</span>
+    </footer>
+
+    <script src="./assets/scripts/copiar-codigo.js"></script>
+    <script src="./assets/scripts/btn-scroll.js"></script>
+  </body>
+</html>
